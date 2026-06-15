@@ -1,0 +1,15 @@
+services:
+  - type: static
+    name: medi-tracker
+    buildCommand: echo "Pre-built static files - no build needed"
+    staticPublishPath: public
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /main.dart.js
+        name: Cache-Control
+        value: public, max-age=3600
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=86400
